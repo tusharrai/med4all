@@ -33,3 +33,5 @@ xolvio:backdoor
 mdg:validated-method
 dburles:factory
 http
+meteorhacks:search-source
+ejson

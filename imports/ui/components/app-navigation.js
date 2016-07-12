@@ -13,7 +13,7 @@ export class AppNavigation extends React.Component {
     return <Navbar>
       <Navbar.Header>
         <Navbar.Brand>
-          <Link to="/">mb</Link>
+          <Link to="/">Med4All</Link>
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>

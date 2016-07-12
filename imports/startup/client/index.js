@@ -13,3 +13,11 @@ Bert.defaults = {
   type: 'default'
   // Accepts: default, success, info, warning, danger.
 };
+
+// var options = {
+//   keepHistory: 1000 * 60 * 5,
+//   localSearch: true
+// };
+// var fields = ['brand', 'manufacturer'];
+
+// MedicineSearch = new SearchSource('searchmedicines', fields, options);
