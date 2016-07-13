@@ -4,4 +4,4 @@ var options = {
 };
 var fields = ['brand', 'manufacturer'];
 
-export const MedicineSearch = new SearchSource('medicines.search', fields, options);
+export const MedicineSearch = new SearchSource('searchmedicines', fields, options);

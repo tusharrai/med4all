@@ -31,7 +31,7 @@ export class Medicines extends React.Component {
 
   render() {
     return <Row>
-    	<Col xs= {12}>
+    	<Col xs={ 12 } sm={ 8 } md={ 6 } mdOffset= { 3 }>
 	    	<form onChange={this.handleSubmit.bind(this)}>
 	            <div className="input-group">
 	              <input className="form-control" placeholder="Search..." name="searchBar" ref="searchBar"/>
@@ -39,9 +39,11 @@ export class Medicines extends React.Component {
 	                  <button className="btn btn-primary" type="button">Search</button>
 	                </span>
 	            </div>
-	         </form>
-    		<MedicinesList />
+	         </form> 
+           <p></p>
+           <MedicinesList />   		
     	</Col>
+      
   	</Row>;
   }
 }

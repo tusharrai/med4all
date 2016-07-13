@@ -10,13 +10,13 @@ const composer = (params, onReady) => {
   const subscription = Meteor.subscribe('searchmedicines');
   const medicines = MedicineSearch.getData({
       transform: function(matchText, regExp) {
-        return matchText.replace(regExp, "<b>$&</b>");
+        return matchText;
       }
     });
-  if (subscription.ready()) {
+  // if (subscription.ready()) {
   	console.log("Subscription Ready");
     onReady(null, { medicines });
-  }
+  // }
 };
 
 export default composeWithTracker(composer, Loading)(MedicinesList);

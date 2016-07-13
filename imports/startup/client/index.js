@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import './routes.js';
 
+
 // Bert.defaults.style = 'growl-top-right';
 
 Bert.defaults = {
@@ -14,10 +15,12 @@ Bert.defaults = {
   // Accepts: default, success, info, warning, danger.
 };
 
-// var options = {
+// Meteor.startup (() => {
+// 	var options = {
 //   keepHistory: 1000 * 60 * 5,
 //   localSearch: true
 // };
 // var fields = ['brand', 'manufacturer'];
 
 // MedicineSearch = new SearchSource('searchmedicines', fields, options);
+// });

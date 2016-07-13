@@ -1,8 +1,9 @@
 import {Medicines} from '../../api/medicines/medicines.js';
 
-let createSource = () => {
   console.log("Creating Search Source");
   SearchSource.defineSource('searchmedicines', function(searchText, options) {
+          console.log("inside defineSource");
+
   var options = {sort: {isoScore: -1}, limit:20};
 
   if(searchText) {
@@ -11,9 +12,13 @@ let createSource = () => {
       {brand: regExp},
       {manufacturer: regExp}
     ]};
+      console.log("with searchText");
 
     return Medicines.find(selector, options).fetch();
+
   } else {
+          console.log("without searchText");
+
     return Medicines.find({}, options).fetch();
   }
 });
@@ -23,7 +28,3 @@ function buildRegExp(searchText) {
   var parts = searchText.trim().split(/[ \-\:]+/);
   return new RegExp("(" + parts.join('|') + ")", "ig");
 }
-}
-
-
-export default createSource;
