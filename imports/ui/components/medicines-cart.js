@@ -34,11 +34,11 @@ const handleInsertCartToMedicine = (cart, event) => {
 
 export const MedicinesCart = ({ cart }) => (
   cart.length > 0 ? <Row>
-    <ListGroup className="medicines-cart">
+    
     {cart.map((doc) => (
       <MedicineCartItem key={ doc._id } medicine={ doc } />
     ))}
-   </ListGroup>
+   <p></p>
    <Button
     type="submit" bsStyle="success"
     onClick={ handleInsertCartToMedicine.bind(this, cart) }>

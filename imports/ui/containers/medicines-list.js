@@ -5,17 +5,17 @@ import { Loading } from '../components/loading.js';
 import { MedicineSearch } from '../../api/medicines/search.js';
 
 
-const composer = (params, onReady) => {
-  console.log("Calling Subscription");
-  const subscription = Meteor.subscribe('searchmedicines');
+const composer = (params, onData) => {
+  // console.log("Calling Subscription");
+  // const subscription = Meteor.subscribe('searchmedicines');
   const medicines = MedicineSearch.getData({
       transform: function(matchText, regExp) {
         return matchText;
       }
     });
   // if (subscription.ready()) {
-  	console.log("Subscription Ready");
-    onReady(null, { medicines });
+  	// console.log("Subscription Ready");
+    onData(null, { medicines });
   // }
 };
 

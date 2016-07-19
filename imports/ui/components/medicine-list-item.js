@@ -8,12 +8,13 @@ export const MedicineListItem = ({ medicine }) => (
         to = {`/medicine/${medicine.brand}`}>
         { medicine.brand }
     </Link>
-
+    <small>
     <Link
         className="pull-right"
                 to = {`/donate/${medicine.brand}`}>
         Donate
     </Link>
+    </small>
   </h4>
 );
 

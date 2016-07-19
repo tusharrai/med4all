@@ -2,12 +2,21 @@ import React from 'react';
 import { Row, Col, ListGroupItem, Input, Button } from 'react-bootstrap';
 import { updateCart, removeCart } from '../../api/cart/methods.js';
 
-const handleUpdateCart = (medicineId, event) => {
-  const brand = event.target.value.trim();
-  if (brand !== '' && event.keyCode === 13) {
+export class MedicineCartItem extends React.Component {
+
+componentDidMount() {
+  const quantity = this.refs.quantity.value.trim();
+}
+
+handleUpdateCart(event) {
+  event.preventDefault();
+  // const quantity = event.target.value.trim();
+  const quantity = this.refs.quantity.value.trim();
+  const userId = Meteor.userId();
+  if (quantity !== '') {
     updateCart.call({
-      _id: medicineId,
-      update: { uid, brand, manufacturer, category, quantity },
+      _id: this.props.medicine._id,
+      update: { quantity },
     }, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
@@ -16,13 +25,13 @@ const handleUpdateCart = (medicineId, event) => {
       }
     });
   }
-};
+}
 
-const handleRemoveCart = (medicineId, event) => {
+handleRemoveCart(event) {
   event.preventDefault();
   if (confirm('Remove from cart?')) {
     removeCart.call({
-      _id: medicineId,
+      _id: this.props.medicine._id,
     }, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
@@ -31,57 +40,48 @@ const handleRemoveCart = (medicineId, event) => {
       }
     });
   }
-};
+}
 
-export const MedicineCartItem = ({ medicine }) => (
-  <Row>
-  <ListGroupItem key={ medicine._id }>
-    <Row>
+render() {
+  return (
+    <Row key={ this.props.medicine._id }>
       <Col xs={ 2 } sm={ 2 }>
-        <Input
+        <h4> {this.props.medicine.brand} </h4>
+      </Col>
+      <Col xs={ 2 } sm={ 2 }>
+        <h4> {this.props.medicine.manufacturer} </h4>
+      </Col>
+      <Col xs={ 2 } sm={ 2 }>
+        <h4> {this.props.medicine.category} </h4>
+      </Col>
+      <Col xs={ 2 } sm={ 2 }>
+        <input
           type="text"
+          ref="quantity"
           standalone
-          defaultValue={ medicine.brand }
+          defaultValue={ this.props.medicine.quantity }
         />
       </Col>
       <Col xs={ 2 } sm={ 2 }>
-        <Input
-          type="text"
-          standalone
-          defaultValue={ medicine.manufacturer }
-        />
-      </Col>
-      <Col xs={ 2 } sm={ 2 }>
-        <Input
-          type="text"
-          standalone
-          defaultValue={ medicine.category }
-        />
-      </Col>
-      <Col xs={ 2 } sm={ 2 }>
-        <Input
-          type="text"
-          standalone
-          defaultValue={ medicine.quantity }
-        />
-      </Col>
-      <Col xs={ 2 } sm={ 2 }>
+      
+        <i class="fa fa-trash"
+          
+          onClick={ this.handleRemoveCart.bind(this) }>
+         </i>
+      
         <Button
-          bsStyle="danger"
-          className="btn-block"
-          onClick={ handleRemoveCart.bind(this, medicine._id) }>
-          Remove
-        </Button>
-      </Col>
-      <Col xs={ 2 } sm={ 2 }>
-        <Button
+          type = "submit"
           bsStyle="primary"
-          className="btn-block"
-          onClick={ handleUpdateCart.bind(this, medicine._id) }>
+          onClick={ this.handleUpdateCart.bind(this) }>
           Update
         </Button>
+        
       </Col>
     </Row>
-  </ListGroupItem>
-</Row>
-);
+    );
+  }
+}
+MedicineCartItem.propTypes = {
+  medicine: React.PropTypes.object,
+  
+};

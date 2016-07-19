@@ -19,7 +19,7 @@ export const updateCart = new ValidatedMethod({
   name: 'cart.update',
   validate: new SimpleSchema({
     _id: { type: String },
-    'update.brand': { type: String, optional: true },
+    'update.quantity': { type: String, optional: true },
   }).validator(),
   run({ _id, update }) {
     Cart.update(_id, { $set: update });

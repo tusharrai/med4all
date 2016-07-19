@@ -66,6 +66,55 @@ Medicine.schema = new SimpleSchema({
     label: 'Strength of the constituent',
     optional: true,
   },
+   alternatives: {
+    type: [Object],
+    optional: true,
+  },
+  "alternatives.$.brand": {
+    type: String,
+    label: 'Brand',
+    optional: true,
+  },
+  "alternatives.$.category": {
+    type: Number,
+    label: 'Category',
+    optional: true,
+  },
+  "alternatives.$.manufacturer": {
+    type: String,
+    label: 'Manufacturer',
+    optional: true,
+  },
+  "alternatives.$.package_type": {
+    type: String,
+    label: 'Medicine Package Type',
+    optional: true,
+  },
+  "alternatives.$.package_price": {
+    type: Number,
+    label: 'Medicine Package Price',
+    optional: true,
+  },
+  "alternatives.$.package_qty": {
+    type: Number,
+    label: 'Medicine Package Qty',
+    optional: true,
+  },
+  "alternatives.$.unit_type": {
+    type: String,
+    label: 'Medicine Unit Type',
+    optional: true,
+  },
+  "alternatives.$.unit_price": {
+    type: Number,
+    label: 'Medicine Unit Price',
+    optional: true,
+  },
+  "alternatives.$.unit_qty": {
+    type: Number,
+    label: 'Medicine Unit Qty',
+    optional: true,
+  },
 });
 
 // {

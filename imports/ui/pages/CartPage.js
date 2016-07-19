@@ -5,7 +5,7 @@ import MedicinesCart from '../containers/medicines-cart.js';
 export const Cart = () => (
   <Row>
     <Col xs= {12}>
-    <h4 className="page-header">Cart</h4>
+    <h3 className="page-header">Cart</h3>
     <MedicinesCart />
     </Col>
   </Row>

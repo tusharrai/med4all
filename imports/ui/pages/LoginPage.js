@@ -14,8 +14,8 @@ export class Login extends React.Component {
 
   render() {
     return <Row>
-      <Col xs={ 12 } sm={ 6 } md={ 4 }>
-        <h4 className="page-header">Login</h4>
+      <Col xs={ 10 } sm={ 8 } md={ 6 } xs Offset = {1} smOffset = {2} mdOffset= { 2 }>
+        <h3 className="page-header">Login</h3>
         <form ref="login" className="login" onSubmit={ this.handleSubmit }>
           <Input
             type="email"

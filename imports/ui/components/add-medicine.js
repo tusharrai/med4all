@@ -33,10 +33,7 @@ export class AddMedicine extends React.Component {
 
   render() {
     return (
-      <Row>
-        <Col xs={ 12 } sm={ 6 } md={ 4 }>
-          <h4 className="page-header">Add Medicine</h4>
-          <form ref="add-medicine" className="add-medicine" onSubmit={ this.handleInsertCart }>
+        <form ref="add-medicine" className="add-medicine" onSubmit={ this.handleInsertCart }>
             <Input
               type="text"
               label="Medicine brand"
@@ -44,6 +41,7 @@ export class AddMedicine extends React.Component {
               name="brand"
               placeholder="Medicine Brand"
               defaultValue={this.props.brand}
+              disabled = {this.props.disableInput}
             />
             <Input
               type="text"
@@ -51,7 +49,9 @@ export class AddMedicine extends React.Component {
               ref="manufacturer"
               name="manufacturer"
               placeholder="Medicine Manufacturer e.g. Ranbaxy, Cipla .."
-              defaultValue={this.props.manufacturer}             
+              defaultValue={this.props.manufacturer} 
+              disabled = {this.props.disableInput}
+            
             />
             <Input
               type="text"
@@ -59,7 +59,8 @@ export class AddMedicine extends React.Component {
               ref="category"
               name="category"
               placeholder="e.g. Tablet, syrup .."
-              defaultValue={this.props.category}           
+              defaultValue={this.props.category} 
+              disabled = {this.props.disableInput}
             />
              <Input
               type="text"
@@ -80,14 +81,13 @@ export class AddMedicine extends React.Component {
               View Cart
             </Link>
 
-          </form>
-        </Col>
-      </Row>
+        </form>
     );
   }
 }
 AddMedicine.propTypes = {
   brand: React.PropTypes.string,
   manufacturer: React.PropTypes.string,
-  category: React.PropTypes.string
+  category: React.PropTypes.string,
+  disableInput: React.PropTypes.bool
 };

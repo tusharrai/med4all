@@ -3,26 +3,38 @@ import { HTTP } from 'meteor/http';
 import { Medicine } from '../medicine';
 
 
-Meteor.publish('medicine.truemd', function (brand) {
+Meteor.publish('medicine.details', function (brand) {
   check (brand, String);
   let init = true;
   
-  REST_URL = 'http://www.truemd.in/api/medicine_details/';
-  REST_OPTIONS = {params: { id: brand,
+  MEDICINE_DETAILS_URL = 'http://www.truemd.in/api/medicine_details/';
+
+  MEDICINE_ALTERNATIVES_URL = 'http://www.truemd.in/api/medicine_alternatives/';
+
+  MEDICINE_DETAILS_OPTIONS = {params: { id: brand,
                       key: '6b79790b28e4c244fdc9f91e161303' }};
 
-  const data = JSON.parse(HTTP.call("GET", REST_URL, REST_OPTIONS).content);
+  MEDICINE_ALTERNATIVES_OPTIONS = {params: { id: brand,
+                      key: '6b79790b28e4c244fdc9f91e161303',
+                      limit: 100 }};
+
+  const medicineDetail = JSON.parse(HTTP.call("GET", MEDICINE_DETAILS_URL, MEDICINE_DETAILS_OPTIONS).content);
+  
+  const medicineAlternatives = JSON.parse(HTTP.call("GET", MEDICINE_ALTERNATIVES_URL, MEDICINE_ALTERNATIVES_OPTIONS).content);
+
   const medicine = {
-    brand: data.response.medicine.brand,
-    category: data.response.medicine.category,
-    manufacturer: data.response.medicine.manufacturer,
-    package_price: data.response.medicine.package_price,
-    package_qty: data.response.medicine.package_qty,
-    package_type: data.response.medicine.package_type,
-    unit_price: data.response.medicine.unit_price,
-    unit_qty: data.response.medicine.unit_qty,
+    brand: medicineDetail.response.medicine.brand,
+    category: medicineDetail.response.medicine.category,
+    manufacturer: medicineDetail.response.medicine.manufacturer,
+    package_price: medicineDetail.response.medicine.package_price,
+    package_qty: medicineDetail.response.medicine.package_qty,
+    package_type: medicineDetail.response.medicine.package_type,
+    unit_price: medicineDetail.response.medicine.unit_price,
+    unit_qty: medicineDetail.response.medicine.unit_qty,
+    constituents: medicineDetail.response.constituents,
+    alternatives: medicineAlternatives.response.medicine_alternatives,
   };
-  // console.log(medicine);
+  console.log(medicine);
   this.added("Medicine", brand, medicine)
   this.ready();
 }); 

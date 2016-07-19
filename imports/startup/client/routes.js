@@ -37,7 +37,7 @@ Meteor.startup(() => {
 
         <Route name="donations" path="/donations" component={ Donations } onEnter={ requireAuth } />
 
-        <Route name="donate" path="/donate/:brand/:manufacturer/:category" component={ DonatePage } onEnter={ requireAuth } />
+        <Route name="donate" path="/donate(/:brand)(/:manufacturer)(/:category)" component={ DonatePage } onEnter={ requireAuth } />
         <Route name="cart" path="/cart" component={ Cart } onEnter={ requireAuth } />
 
         <Route name="login" path="/login" component={ Login } />

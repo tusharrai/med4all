@@ -5,7 +5,7 @@ import { Loading } from '../components/loading.js';
 
 const composer = (props, onReady) => {
   
-  const subscription = Meteor.subscribe('medicine.truemd', props.brand);
+  const subscription = Meteor.subscribe('medicine.details', props.brand);
   if (subscription.ready()) {
     const medicine = Medicine.findOne({brand: props.brand});
     onReady(null, { medicine});

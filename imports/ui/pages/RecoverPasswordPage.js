@@ -13,7 +13,7 @@ export class RecoverPassword extends React.Component {
 
   render() {
     return <Row>
-      <Col xs={ 12 } sm={ 6 } md={ 4 }>
+      <Col xs={ 10 } sm={ 8 } md={ 6 } xs Offset = {1} smOffset = {2} mdOffset= { 2 }>
         <h4 className="page-header">Recover Password</h4>
         <Alert bsStyle="info">
           Enter your email address below to receive a link to reset your password.

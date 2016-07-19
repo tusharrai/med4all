@@ -26,15 +26,15 @@ export const AuthenticatedNavigation = () => (
         <NavItem eventKey={ 3 } href="/donate">Donate</NavItem>
       </LinkContainer>
       <LinkContainer to="/donations">
-        <NavItem eventKey={ 3 } href="/donations">Your Donations</NavItem>
+        <NavItem eventKey={ 4 } href="/donations">Your Donations</NavItem>
       </LinkContainer>
     </Nav>
     <Nav pullRight>
       <LinkContainer to="/cart">
-        <NavItem eventKey={ 4 } href="/cart">Cart <CartCount></CartCount></NavItem>
+        <NavItem eventKey={ 5 } href="/cart">Cart <CartCount></CartCount></NavItem>
       </LinkContainer>
-      <NavDropdown eventKey={ 5 } title={ userName() } id="basic-nav-dropdown">
-        <MenuItem eventKey={ 5.1 } onClick={ handleLogout }>Logout</MenuItem>
+      <NavDropdown eventKey={ 6 } title={ userName() } id="basic-nav-dropdown">
+        <MenuItem eventKey={ 6.1 } onClick={ handleLogout }>Logout</MenuItem>
       </NavDropdown>
     </Nav>
   </div>
