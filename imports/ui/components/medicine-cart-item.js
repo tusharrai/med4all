@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col, ListGroupItem, Input, Button } from 'react-bootstrap';
 import { updateCart, removeCart } from '../../api/cart/methods.js';
+import FontAwesome from 'react-fontawesome';
 
 export class MedicineCartItem extends React.Component {
 
@@ -62,20 +63,22 @@ render() {
           defaultValue={ this.props.medicine.quantity }
         />
       </Col>
-      <Col xs={ 2 } sm={ 2 }>
+      <Col xs= {1} sm={1} md={1} >
+      <FontAwesome
+        name='trash'
+        size='2x'
+        style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+        onClick={ this.handleRemoveCart.bind(this) }
+      />
+      </Col>
+      <Col xs= {1} sm={1} md={1} >
       
-        <i class="fa fa-trash"
-          
-          onClick={ this.handleRemoveCart.bind(this) }>
-         </i>
-      
-        <Button
-          type = "submit"
-          bsStyle="primary"
-          onClick={ this.handleUpdateCart.bind(this) }>
-          Update
-        </Button>
-        
+      <FontAwesome
+        name='pencil-square-o'
+        size='2x'
+        style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+        onClick={ this.handleUpdateCart.bind(this) }
+      />
       </Col>
     </Row>
     );

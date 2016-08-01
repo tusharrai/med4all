@@ -4,6 +4,10 @@ import faker from 'faker';
 export const Donations = new Mongo.Collection('Donations');
 
 Donations.schema = new SimpleSchema({
+  donationId: {
+    type: String,
+    label: 'Donation Id',
+  },
   userId: {
     type: String,
     regEx: SimpleSchema.RegEx.Id,
@@ -38,54 +42,77 @@ Donations.schema = new SimpleSchema({
     label: 'Quantity',
     optional: true,
   },
-  constituents: {
-    type: [Object],
-    optional: true,
-  },
-  "constituents.$.name": {
+  
+  batchNumber: {
     type: String,
-    label: 'Name of the constituent',
+    label: 'Batch Number',
     optional: true,
   },
-  "constituents.$.qty": {
+  manufactureMonth: {
     type: Number,
-    label: 'Quantity of the Constituent',
+    label: 'Manufacture Date',
     optional: true,
   },
-  "constituents.$.strength": {
+  manufactureYear: {
+    type: Number,
+    label: 'Manufacture Year',
+    optional: true,
+  },
+  expiryMonth: {
+    type: Number,
+    label: 'Expiry Date',
+    optional: true,
+  },
+  expiryYear: {
+    type: Number,
+    label: 'Expiry Year',
+    optional: true,
+  },
+  donationMode: {
     type: String,
-    label: 'Strength of the constituent',
     optional: true,
   },
-});
+  pickupAddress: {
+    type: String,
+    optional: true,
 
-// {
-//   "status": "ok",
-//   "response": {
-//     "medicine": {
-//       "brand": "Crocin (1000 mg)",
-//       "category": "Tablet",
-//       "d_class": "null",
-//       "generic_id": 72361,
-//       "id": 23215,
-//       "manufacturer": "Glaxo Smithkline Pharmaceuticals Ltd.",
-//       "package_price": 49.6,
-//       "package_qty": 40,
-//       "package_type": "Tablet",
-//       "unit_price": 1.24,
-//       "unit_qty": 1,
-//       "unit_type": "Tablet"
-//     },
-//     "constituents": [
-//       {
-//         "generic_id": "72361",
-//         "id": 127767,
-//         "name": "Paracetamol",
-//         "qty": 1,
-//         "strength": "1000 mg\r"
-//       }
-//     ]
-//   }
-// }
+  },
+  pickupDate: {
+    type: Date,
+    optional: true,
+  },
+  pickupTime: {
+    type: String,
+    optional:true,
+  },
+  droppedAt: {
+    type: String, //DropBox Id
+    optional: true,
+  },
+
+  createdAt: {
+    type: Date,
+    autoValue() {
+      if (this.isInsert) {
+        return new Date();
+      } else if (this.isUpsert) {
+        return {$setOnInsert: new Date()};
+      } else {
+        this.unset();
+      }
+    }
+  },
+  updatedAt: {
+    type: Date,
+    autoValue() {
+      if (!this.isInsert) {
+        return new Date();
+      }
+    },
+    denyInsert: true,
+    optional: true
+  },
+  
+});
 
 Donations.attachSchema(Donations.schema);

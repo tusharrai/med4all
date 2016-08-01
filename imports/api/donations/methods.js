@@ -3,6 +3,7 @@ import { Donations } from './donations';
 export const insertDonation = new ValidatedMethod({
   name: 'donations.insert',
   validate: new SimpleSchema({
+    donationId: {type: String},
     userId: {type: String},
     brand: { type: String },
     manufacturer: {type: String},

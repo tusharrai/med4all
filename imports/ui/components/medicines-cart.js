@@ -3,11 +3,15 @@ import { Row, Button, ListGroup, Alert } from 'react-bootstrap';
 import { MedicineCartItem } from './medicine-cart-item.js';
 import { insertDonation } from '../../api/donations/methods.js';
 import { updateCart, removeCart } from '../../api/cart/methods.js';
+import { Random } from 'meteor/random';
 
 const handleInsertCartToMedicine = (cart, event) => {
   event.preventDefault();
+  const donationId = Random.id(8);
+  console.log(donationId);
   cart.map((doc) => {
     insertDonation.call({
+      donationId: donationId,
       userId: Meteor.userId(),
       brand: doc.brand,
       manufacturer: doc.manufacturer,
@@ -17,19 +21,14 @@ const handleInsertCartToMedicine = (cart, event) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
+        removeCart.call({
+           _id: doc._id,
+         });
         Bert.alert('Medicines in cart inserted!', 'success');
       }
     });
-    removeCart.call({
-      _id: doc._id,
-    }, (error) => {
-      if (error) {
-        Bert.alert(error.reason, 'danger');
-      } else {
-        Bert.alert('Cart removed!', 'success');
-      }
-    });
   });
+ 
 };
 
 export const MedicinesCart = ({ cart }) => (

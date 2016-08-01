@@ -7,15 +7,15 @@ Meteor.publish('medicine.details', function (brand) {
   check (brand, String);
   let init = true;
   
-  MEDICINE_DETAILS_URL = 'http://www.truemd.in/api/medicine_details/';
+  MEDICINE_DETAILS_URL = `${Meteor.settings.private.med_url}/medicine_details/`;
 
-  MEDICINE_ALTERNATIVES_URL = 'http://www.truemd.in/api/medicine_alternatives/';
+  MEDICINE_ALTERNATIVES_URL = `${Meteor.settings.private.med_url}/medicine_alternatives/`;
 
   MEDICINE_DETAILS_OPTIONS = {params: { id: brand,
-                      key: '6b79790b28e4c244fdc9f91e161303' }};
+                      key: Meteor.settings.private.med_key }};
 
   MEDICINE_ALTERNATIVES_OPTIONS = {params: { id: brand,
-                      key: '6b79790b28e4c244fdc9f91e161303',
+                      key: Meteor.settings.private.med_key,
                       limit: 100 }};
 
   const medicineDetail = JSON.parse(HTTP.call("GET", MEDICINE_DETAILS_URL, MEDICINE_DETAILS_OPTIONS).content);
