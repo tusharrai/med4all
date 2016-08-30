@@ -18,10 +18,10 @@ export const MedicineDetail = ({ medicine }) => (
     <Well>
     <p>Manufacturer: {medicine.manufacturer}</p>
     <p>Category: {medicine.category}</p>
-    <p>Package Price: {medicine.package_price}</p>
+    <p>Package Price: <i className="fa fa-inr" aria-hidden="true"> </i> {medicine.package_price}</p>
     <p>Package Quantity: {medicine.package_qty}</p>
     <p>Package Type: {medicine.package_type}</p>
-    <p>Unit Price: {medicine.unit_price}</p>
+    <p>Unit Price: <i className="fa fa-inr" aria-hidden="true"> </i> {medicine.unit_price} per {medicine.package_type}</p>
     <p>Unit Quantity: {medicine.unit_qty}</p> 
     <p>Constituents: </p>
     {medicine.constituents.map((doc) => (

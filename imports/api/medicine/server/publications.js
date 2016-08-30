@@ -34,7 +34,7 @@ Meteor.publish('medicine.details', function (brand) {
     constituents: medicineDetail.response.constituents,
     alternatives: medicineAlternatives.response.medicine_alternatives,
   };
-  console.log(medicine);
+  // console.log(medicine);
   this.added("Medicine", brand, medicine)
   this.ready();
 }); 

@@ -1,16 +1,18 @@
 {
-  "name": "application-name",
+  "name": "med4all",
   "version": "1.0.0",
-  "description": "Application description.",
+  "description": "Bring unused medicines to good use.",
   "scripts": {
     "start": "meteor --settings settings-development.json",
     "test": "meteor test --driver-package practicalmeteor:mocha --port 5000",
     "chimp-watch": "chimp --ddp=http://localhost:3000 --watch --mocha --path=tests",
     "chimp-test": "chimp --ddp=http://localhost:3000 --mocha --path=tests",
     "staging": "meteor deploy staging.meteor.com --settings settings-development.json",
-    "production": "meteor deploy production.meteor.com --settings settings-production.json"
+    "production": "meteor deploy production.meteor.com --settings settings-production.json",
+    "storybook": "start-storybook -p 9001"
   },
   "devDependencies": {
+    "@kadira/storybook": "^2.3.0",
     "chimp": "^0.33.1",
     "eslint": "^2.8.0",
     "eslint-config-airbnb": "^7.0.0",
@@ -49,7 +51,9 @@
     "rules": {}
   },
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "bootstrap": "^3.3.6",
+    "eslint-plugin-jsx-a11y": "^2.2.0",
     "jquery": "^2.2.3",
     "jquery-validation": "^1.15.0",
     "meteor-promise": "^0.7.2",
