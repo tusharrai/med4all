@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Row, Col, Input, Button } from 'react-bootstrap';
 import { handleLogin } from '../../modules/login';
+import RaisedButton from 'material-ui/RaisedButton';
+
+const style = {
+  
+  margin: 20,
+};
 
 export class Login extends React.Component {
   componentDidMount() {
@@ -14,7 +20,7 @@ export class Login extends React.Component {
 
   render() {
     return <Row>
-      <Col xs={ 10 } sm={ 8 } md={ 6 } xs Offset = {1} smOffset = {2} mdOffset= { 2 }>
+      <Col xs={ 8 } sm={ 6 } md={ 4 } xsOffset = {2} smOffset = {3} mdOffset= { 4 }>
         <h3 className="page-header">Login</h3>
         <form ref="login" className="login" onSubmit={ this.handleSubmit }>
           <Input
@@ -37,8 +43,11 @@ export class Login extends React.Component {
               placeholder="Password"
             />
           </div>
-          <Button type="submit" bsStyle="success">Login</Button>
+          <RaisedButton type="submit" label="Login" primary={true}/>
+
         </form>
+        
+        <p>Don't have an account? <Link to="/signup">Sign Up</Link>.</p>
       </Col>
     </Row>;
   }

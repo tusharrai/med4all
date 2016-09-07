@@ -3,6 +3,7 @@ import { Navbar } from 'react-bootstrap';
 import { Link } from 'react-router';
 import { PublicNavigation } from './public-navigation';
 import { AuthenticatedNavigation } from './authenticated-navigation';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 export class AppNavigation extends React.Component {
   renderNavigation(hasUser) {
@@ -10,17 +11,9 @@ export class AppNavigation extends React.Component {
   }
 
   render() {
-    return <Navbar>
-      <Navbar.Header>
-        <Navbar.Brand>
-          <Link to="/">Med4All</Link>
-        </Navbar.Brand>
-        <Navbar.Toggle />
-      </Navbar.Header>
-      <Navbar.Collapse>
+    return <MuiThemeProvider>
         { this.renderNavigation(this.props.hasUser) }
-      </Navbar.Collapse>
-    </Navbar>;
+     </MuiThemeProvider>
   }
 }
 

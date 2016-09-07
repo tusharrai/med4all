@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Row, Col, Input, Button } from 'react-bootstrap';
 import { handleSignup } from '../../modules/signup';
+import RaisedButton from 'material-ui/RaisedButton';
 
 export class Signup extends React.Component {
   componentDidMount() {
@@ -51,7 +52,7 @@ export class Signup extends React.Component {
             name="password"
             placeholder="Password"
           />
-          <Button type="submit" bsStyle="success">Sign Up</Button>
+          <RaisedButton type="submit" label="Sign Up" primary={true}/>
         </form>
         <p>Already have an account? <Link to="/login">Log In</Link>.</p>
       </Col>

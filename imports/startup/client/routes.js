@@ -31,7 +31,7 @@ Meteor.startup(() => {
   render(
     <Router history={ browserHistory }>
       <Route path="/" component={ App }>
-        <IndexRoute name="index" component={ Index } onEnter={ requireAuth } />
+        <IndexRoute name="index" component={ Index } />
         <Route name="medicines" path="/medicines" component={ Medicines } onEnter={ requireAuth } />
         <Route name="medicine" path="/medicine/:brand" component={ MedicinePage } onEnter={ requireAuth } />
 

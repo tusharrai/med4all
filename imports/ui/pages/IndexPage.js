@@ -1,7 +1,7 @@
 import React from 'react';
-import { Jumbotron, Button } from 'react-bootstrap';
+import { Jumbotron } from 'react-bootstrap';
 import { Link } from 'react-router';
-
+import RaisedButton from 'material-ui/RaisedButton';
 
 export const Index = () => (
   <Jumbotron className="text-center">
@@ -10,11 +10,8 @@ export const Index = () => (
     <p>
       <Link
         to="/donate">
-        <Button
-          type="submit" bsStyle="success"
-        >
-          Donate
-        </Button>
+        <RaisedButton label="Donate" primary={true}/>
+         
       </Link>
     </p>
     <p style={ { fontSize: '16px', color: '#aaa' } }>Beta</p>

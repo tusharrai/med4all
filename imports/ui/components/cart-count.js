@@ -1,9 +1,12 @@
 import React from 'react';
-import { Badge } from 'react-bootstrap';
+import Badge from 'material-ui/Badge';
 
 export const CartCount = ({ cartCount }) => (
-  <Badge> {cartCount} </Badge>
-
+	<Badge
+      badgeContent={cartCount}
+      primary={true}
+    >
+    </Badge>
 );
 
 CartCount.propTypes = {
